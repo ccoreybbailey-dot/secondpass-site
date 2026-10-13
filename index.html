@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Second Pass</title>
+<meta name="description" content="An iPhone app you talk into. What you say comes back to you later, in your own voice, at a moment you didn&rsquo;t choose.">
+<link rel="canonical" href="https://secondpass.app/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://secondpass.app/">
+<meta property="og:title" content="Second Pass">
+<meta property="og:description" content="An iPhone app you talk into. What you say comes back to you later, in your own voice, at a moment you didn&rsquo;t choose.">
+<meta property="og:image" content="https://secondpass.app/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Second Pass. The answer you&rsquo;re looking for is usually something you already said.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#E2EAE6">
+<meta name="color-scheme" content="light">
+<link rel="icon" href="assets/icon-64.png" type="image/png">
+<link rel="apple-touch-icon" href="assets/icon-180.png">
+
+<!--
+  The sign-up form link sits in the three "Join the test" links, the ones
+  marked data-form. If the form ever changes, change all three together.
+
+  Rules for the words on this page:
+    · Say the app never sends recordings anywhere. Never say they never leave
+      the phone: iCloud Backup copies them, which is the user's own setting.
+    · Make no "no synthetic voice" and no "no AI" claim.
+    · No company branding. The contact address is the only exception.
+    · The phone line says iPhone 14 Pro or newer, "for now". Widen it once
+      older phones are supported.
+  Every screenshot and the film are real captures of the app with invented
+  passages. The voice in the film is Corey's.
+-->
+<style>
+  :root {
+    --ground: #E2EAE6;
+    --ink: #16201F;
+    --soft: #596361;
+    --accent: #23685D;
+    --hair: #C5CECA;
+    --plate: #FBFBFC;
+    --shadow: 0 24px 60px -24px rgba(22, 32, 31, .35);
+    --section: clamp(96px, 12vw, 180px);
+    --sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body {
+    margin: 0; background: var(--ground); color: var(--ink);
+    font: 17px/1.5 var(--sans);
+    -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+  }
+  img, video { display: block; max-width: 100%; height: auto; }
+  p, h1, h2, h3, ul, figure { margin: 0; }
+  ul { padding: 0; list-style: none; }
+  a { color: var(--accent); text-underline-offset: 3px; }
+  a:hover { color: var(--ink); }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+
+  .wrap { max-width: 1280px; margin: 0 auto; padding: 0 20px; }
+  @media (min-width: 860px) { .wrap { padding: 0 96px; } }
+
+  .soft { color: var(--soft); }
+  .label { font-size: 13px; font-weight: 600; letter-spacing: .02em; color: var(--accent); }
+  .statement { font-size: clamp(22px, 1.4vw + 15px, 32px); line-height: 1.3; font-weight: 500; letter-spacing: -.015em; text-wrap: pretty; }
+  .two { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr)); gap: 32px 64px; }
+  section { padding-top: var(--section); }
+
+  /* buttons */
+  .pill {
+    display: inline-flex; align-items: center; justify-content: center;
+    height: 52px; padding: 0 26px; border-radius: 999px;
+    background: var(--accent); color: var(--ground);
+    font: 600 17px/1 var(--sans); text-decoration: none; white-space: nowrap;
+    transition: opacity .15s ease, transform .15s ease;
+  }
+  .pill:hover { color: var(--ground); opacity: .9; }
+  .pill:active { transform: scale(.98); }
+  .pill.small { height: 44px; padding: 0 18px; font-size: 15px; }
+  @media (min-width: 860px) { .pill.small { height: 38px; font-size: 14px; } }
+  .ghost {
+    display: inline-flex; align-items: center; height: 44px; padding: 0 20px; border-radius: 999px;
+    border: 1px solid var(--hair); background: transparent; color: var(--accent);
+    font: 600 15px/1 var(--sans); cursor: pointer;
+  }
+  .ghost:hover { border-color: var(--accent); }
+  .cta { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; }
+  .cta-note { display: flex; flex-direction: column; gap: 2px; font-size: 14px; line-height: 1.45; color: var(--soft); }
+
+  /* header */
+  .top { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 64px; }
+  @media (min-width: 860px) { .top { height: 88px; } }
+  .brand { display: inline-flex; align-items: center; gap: 10px; color: var(--ink); text-decoration: none; font-weight: 600; font-size: 16px; letter-spacing: -.01em; }
+  .brand img { width: 26px; height: 26px; border-radius: 7px; }
+
+  /* hero */
+  .hero { display: grid; gap: 48px; align-items: center; padding-top: 40px; }
+  @media (min-width: 900px) { .hero { grid-template-columns: 1fr 1fr; padding-top: 72px; } }
+  .hero h1 { font-size: clamp(34px, 3.4vw + 16px, 56px); line-height: 1.06; font-weight: 600; letter-spacing: -.025em; max-width: 600px; text-wrap: balance; }
+  .hero .lede { margin-top: 22px; font-size: clamp(17px, .5vw + 15px, 20px); line-height: 1.5; color: var(--soft); max-width: 460px; text-wrap: pretty; }
+  .hero .cta { margin-top: 32px; }
+  .shots { display: flex; gap: 14px; justify-content: center; align-items: flex-start; }
+  @media (min-width: 900px) { .shots { gap: 24px; justify-content: flex-end; } }
+  .shot {
+    width: min(48%, 260px); border-radius: 13% / 6%;
+    border: 1px solid var(--hair); background: var(--plate); box-shadow: var(--shadow);
+  }
+  .shot + .shot { width: min(40%, 220px); margin-top: 64px; }
+  @media (min-width: 900px) { .shot + .shot { margin-top: 120px; } }
+
+  /* what it is */
+  .intro { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 40px 48px; }
+  .intro .statement { grid-column: 1 / -1; max-width: 820px; }
+  .intro p:not(.statement) { margin-top: 10px; color: var(--soft); max-width: 400px; text-wrap: pretty; }
+
+  /* how it works */
+  .steps { margin-top: 40px; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr)); gap: 48px 32px; }
+  .step img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 20px; border: 1px solid var(--hair); background: var(--plate); }
+  .step div { margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--hair); }
+  .step .n { font-size: 28px; font-weight: 500; letter-spacing: -.02em; line-height: 1; color: var(--soft); }
+  .step h3 { margin-top: 14px; font-size: 19px; font-weight: 600; letter-spacing: -.01em; }
+  .step p { margin-top: 8px; font-size: 16px; line-height: 1.55; color: var(--soft); }
+
+  /* what it leaves out */
+  .out ul { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 32px; font-size: 18px; font-weight: 500; letter-spacing: -.005em; }
+  .out li { padding: 16px 0; border-top: 1px solid var(--hair); }
+
+  /* your words stay yours */
+  .privacy { align-items: end; }
+  .privacy .claim { font-size: clamp(28px, 1.6vw + 18px, 38px); line-height: 1.15; font-weight: 600; letter-spacing: -.022em; max-width: 520px; text-wrap: balance; }
+  .privacy p:not(.claim) { color: var(--soft); max-width: 420px; text-wrap: pretty; }
+
+  /* the film */
+  .film { align-items: center; }
+  .film video {
+    width: min(100%, 440px); aspect-ratio: 4 / 5; justify-self: center;
+    border-radius: 28px; border: 1px solid var(--hair); background: var(--plate); box-shadow: var(--shadow);
+  }
+  @media (min-width: 900px) { .film video { justify-self: end; } }
+
+  /* why */
+  .why .body { display: flex; flex-direction: column; gap: 18px; font-size: 18px; line-height: 1.65; max-width: 520px; }
+  .why .body p { text-wrap: pretty; }
+
+  /* the test */
+  .test { margin-top: var(--section); padding-top: 64px; border-top: 1px solid var(--hair); }
+  .facts { margin-top: 40px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 24px 32px; }
+  .facts h3 { font-size: 18px; font-weight: 600; letter-spacing: -.005em; }
+  .facts p { margin-top: 4px; font-size: 16px; color: var(--soft); }
+  .test .cta { margin-top: 40px; }
+
+  footer { margin-top: var(--section); padding: 28px 0 48px; border-top: 1px solid var(--hair); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 24px; font-size: 15px; color: var(--soft); }
+  footer nav { display: flex; flex-wrap: wrap; gap: 8px 24px; }
+
+  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+  .stack > * + * { margin-top: 20px; }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="top">
+    <a class="brand" href="./"><img src="assets/icon-64.png" alt="" width="26" height="26">Second Pass</a>
+    <a class="pill small" data-form href="https://docs.google.com/forms/d/e/1FAIpQLScvdByvg8agyxQhshS12zq-YlLMeuv6PzCnHumQnrZA5gPb0Q/viewform">Join the test</a>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <h1>The answer you&rsquo;re looking for is usually something you already said.</h1>
+        <p class="lede">Second Pass keeps the thoughts you say out loud and plays one back to you later. In your own voice, at a moment you didn&rsquo;t choose.</p>
+        <div class="cta">
+          <a class="pill" data-form href="https://docs.google.com/forms/d/e/1FAIpQLScvdByvg8agyxQhshS12zq-YlLMeuv6PzCnHumQnrZA5gPb0Q/viewform">Join the test</a>
+          <span class="cta-note"><span>A few questions first.</span><span>On TestFlight, iPhone 14 Pro or newer.</span></span>
+        </div>
+      </div>
+      <div class="shots">
+        <img class="shot" src="assets/screen-main.png" width="600" height="1304" alt="The app: a dark sphere to talk into, a kept passage dated 15 January, and a Hear it button.">
+        <img class="shot" src="assets/screen-keep.png" width="600" height="1304" alt="Reading a recording back: one part of it is kept, the rest stays as it was said.">
+      </div>
+    </section>
+
+    <section class="intro">
+      <p class="statement">You talk into it: a thought, a reminder, something you want to hold yourself to. Later, at a moment you didn&rsquo;t choose, one of them comes back.</p>
+      <div>
+        <h2 class="label">What you say</h2>
+        <p>It keeps the recording on your phone and turns it into words on the device. You read back what you said and keep the parts worth hearing again.</p>
+      </div>
+      <div>
+        <h2 class="label">What comes back</h2>
+        <p>Once or twice a day, while you have headphones in and your hands are busy, it plays one back. You can also open it and ask for one. There is no list to browse.</p>
+      </div>
+    </section>
+
+    <section id="how">
+      <h2 class="label">How it works</h2>
+      <ol class="steps">
+        <li class="step">
+          <img src="assets/step-talk.jpg" width="800" height="600" loading="lazy" alt="The app&rsquo;s dark sphere, with a microphone in it.">
+          <div><p class="n" aria-hidden="true">1</p><h3>You talk.</h3><p>Out loud, the way you would on a walk.</p></div>
+        </li>
+        <li class="step">
+          <img src="assets/step-words.png" width="800" height="600" loading="lazy" alt="A recording turned into words, in the pieces it was said.">
+          <div><p class="n" aria-hidden="true">2</p><h3>It keeps it.</h3><p>Saved on your phone and turned into words there.</p></div>
+        </li>
+        <li class="step">
+          <img src="assets/step-choose.png" width="800" height="600" loading="lazy" alt="One piece of a recording, with Hear it, Keep and Add the next bit.">
+          <div><p class="n" aria-hidden="true">3</p><h3>You choose.</h3><p>Read back what you said. Keep the parts worth hearing again.</p></div>
+        </li>
+        <li class="step">
+          <img src="assets/step-back.png" width="800" height="600" loading="lazy" alt="A kept passage dated 15 January, with a Hear it button.">
+          <div><p class="n" aria-hidden="true">4</p><h3>It hands it back.</h3><p>In your own voice, with headphones in. Or when you ask.</p></div>
+        </li>
+      </ol>
+    </section>
+
+    <section class="out two">
+      <div class="stack" style="max-width:400px">
+        <h2 class="label">What it leaves out</h2>
+        <p class="statement" style="font-size:clamp(22px,1vw + 17px,28px)">When it feels too quiet, that is the design working.</p>
+      </div>
+      <ul>
+        <li>No feed</li><li>No account</li>
+        <li>No streaks</li><li>No server</li>
+        <li>No stats</li><li>No AI writing for you</li>
+        <li>No coach</li><li>Nothing to scroll</li>
+      </ul>
+    </section>
+
+    <section class="privacy two">
+      <div class="stack">
+        <h2 class="label">Your words stay yours</h2>
+        <p class="claim">This app never sends your recordings anywhere.</p>
+      </div>
+      <div class="stack">
+        <p>They are turned into words on your phone, and there is no account to make. If your phone backs up to iCloud, the backup includes them, the same as any other app.</p>
+        <p><a href="privacy/">Privacy policy</a></p>
+      </div>
+    </section>
+
+    <section class="film two">
+      <div class="stack" style="max-width:420px">
+        <h2 class="label">See it work</h2>
+        <p class="statement" style="font-size:clamp(22px,1vw + 17px,28px)">Say it. Keep it. Hear it back.</p>
+        <p class="soft">Filmed in the app as it is today. The passages are invented, and the voice is mine.</p>
+        <p><button type="button" class="ghost" id="film-sound">Play with sound</button></p>
+      </div>
+      <video id="film" src="assets/demo.mp4" poster="assets/demo-poster.jpg" width="1080" height="1350"
+             muted loop playsinline preload="none" aria-describedby="film-text"></video>
+      <div id="film-text" class="sr-only">
+        A short film of the app. Second Pass, an app you talk into. Say a thought out loud: the sphere turns red while you talk.
+        Keep the part worth hearing again: the recording is read back and one part is kept. Later, it plays back, in your own voice.
+        On your home screen, a new one through the day. And with headphones in, one comes back on its own: leave Listening on;
+        once or twice a day, at a moment you didn&rsquo;t choose. The nudge comes from you, not from an outside source.
+        The answer you&rsquo;re looking for is usually something you already said.
+      </div>
+    </section>
+
+    <section class="why two">
+      <div class="stack" style="max-width:420px">
+        <h2 class="label">Why I built it</h2>
+        <p class="statement" style="font-size:clamp(24px,1.2vw + 17px,30px)">The nudge comes from yourself, not from an outside source.</p>
+      </div>
+      <div class="body">
+        <p>I&rsquo;d find myself looking for an answer when I&rsquo;d already figured it out. Life is busy, I get off track, and that&rsquo;s when I start reaching for quick dopamine, like reels. I wanted something to reach for instead.</p>
+        <p>People are capable of their own insights. They just need a way to keep them that works.</p>
+        <p>I still work in the trades. I built this on evenings and weekends, for myself first, and I&rsquo;ve used it every day since the summer.</p>
+        <p class="soft">Corey</p>
+      </div>
+    </section>
+
+    <section class="test" id="join">
+      <div class="stack">
+        <h2 class="label">The test</h2>
+        <p class="statement" style="max-width:720px;text-wrap:balance">For the first few days nothing comes back, because you&rsquo;re filling it.</p>
+      </div>
+      <div class="facts">
+        <div><h3>On TestFlight</h3><p>It is not in the App Store.</p></div>
+        <div><h3>iPhone 14 Pro or newer</h3><p>For now.</p></div>
+        <div><h3>Yours for good</h3><p>Free, if you reply to the email on day 7.</p></div>
+      </div>
+      <div class="cta">
+        <a class="pill" data-form href="https://docs.google.com/forms/d/e/1FAIpQLScvdByvg8agyxQhshS12zq-YlLMeuv6PzCnHumQnrZA5gPb0Q/viewform">Join the test</a>
+        <span class="cta-note"><span>A few questions, to see if it&rsquo;s a fit.</span><span>If it is, a TestFlight invite comes by email.</span></span>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>Second Pass</span>
+    <nav aria-label="Footer"><a href="privacy/">Privacy policy</a><a href="mailto:corey@baileydigital.io">corey@baileydigital.io</a></nav>
+  </footer>
+</div>
+
+<script>
+  (function () {
+    // The film plays only while most of it is on screen in a page you are looking at.
+    // Scroll past it, switch tabs or leave the page, and it stops and drops the sound.
+    // It never starts on its own for anyone who has asked their device for less motion.
+    var film = document.getElementById("film");
+    var sound = document.getElementById("film-sound");
+    if (!film || !sound) return;
+    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var level = 0;   // 0 off screen, 1 partly on screen, 2 mostly on screen
+    function play() { var p = film.play(); if (p && p.catch) p.catch(function () {}); }
+    function quiet() {
+      film.muted = true; film.loop = true;
+      sound.textContent = "Play with sound";
+    }
+    function away() { film.pause(); if (!film.muted) quiet(); }
+    function seen(now) {
+      var was = level; level = now;
+      if (document.hidden) { away(); return; }
+      if (level === 2) { if (!reduce || !film.muted) play(); }
+      else if (level < was) { away(); }   // less of it showing than a moment ago: stop
+    }
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(function (entries) {
+        var e = entries[entries.length - 1];
+        seen(!e.isIntersecting ? 0 : e.intersectionRatio >= 0.35 ? 2 : 1);
+      }, { threshold: [0, 0.35] }).observe(film);
+    } else {
+      seen(2);
+    }
+    document.addEventListener("visibilitychange", function () {
+      if (document.hidden) { away(); } else { seen(level); }
+    });
+    window.addEventListener("pagehide", away);
+    sound.addEventListener("click", function () {
+      if (film.muted || film.paused) {
+        film.muted = false; film.loop = false; film.currentTime = 0; play();
+        sound.textContent = "Mute";
+        film.scrollIntoView({ block: "nearest", behavior: reduce ? "auto" : "smooth" });
+      } else {
+        quiet();
+        if (reduce) film.pause();
+      }
+    });
+    film.addEventListener("ended", function () {   // one pass with sound, then back to quiet
+      quiet();
+      if (level === 2 && !document.hidden && !reduce) play();
+    });
+  })();
+</script>
+</body>
+</html>
