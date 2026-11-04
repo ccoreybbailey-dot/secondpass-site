@@ -1,0 +1,12 @@
+title: Second Pass
+description: "An iPhone app you talk into. What you say comes back to you later, in your own voice, at a moment you didn’t choose."
+url: https://secondpass.app
+author: Corey Bailey
+timezone: America/Toronto
+permalink: /blog/:title/
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+feed:
+  path: blog/feed.xml
+markdown: kramdown

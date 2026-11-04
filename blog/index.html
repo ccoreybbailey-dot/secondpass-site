@@ -1,0 +1,13 @@
+---
+layout: blog
+title: Blog
+description: "Posts about Second Pass, by Corey Bailey."
+---
+<section class="listing">
+  <h1 class="label">Blog</h1>
+  <ul class="posts">
+{%- for post in site.posts %}
+    <li><a href="{{ post.url }}">{{ post.title | escape }}</a><time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date: '%-d %B %Y' }}</time></li>
+{%- endfor %}
+  </ul>
+</section>

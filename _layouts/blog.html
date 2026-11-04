@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ page.title | escape }} — Second Pass</title>
+<meta name="description" content="{{ page.description | escape }}">
+<meta name="author" content="Corey Bailey">
+<link rel="canonical" href="https://secondpass.app{{ page.url }}">
+<meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}">
+<meta property="og:url" content="https://secondpass.app{{ page.url }}">
+<meta property="og:title" content="{{ page.title | escape }}">
+<meta property="og:description" content="{{ page.description | escape }}">
+<meta property="og:image" content="https://secondpass.app/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Second Pass. The answer you&rsquo;re looking for is usually something you already said.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#E2EAE6">
+<meta name="color-scheme" content="light">
+<link rel="icon" href="/assets/icon-64.png" type="image/png">
+<link rel="apple-touch-icon" href="/assets/icon-180.png">
+{% feed_meta %}
+<!--
+  The shell for the Blog: the listing and every post.
+  The header's "Join the test" link is marked data-form, like the three on
+  the home page. If the form ever changes, change it here too.
+  Light only, like the home page. No scripts.
+-->
+<style>
+  /* Copied from index.html (tokens, base text, .wrap, header, .pill.small,
+     .label, footer). If those change there, change them here too. */
+  :root {
+    --ground: #E2EAE6;
+    --ink: #16201F;
+    --soft: #596361;
+    --accent: #23685D;
+    --hair: #C5CECA;
+    --section: clamp(96px, 12vw, 180px);
+    --sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0; background: var(--ground); color: var(--ink);
+    font: 17px/1.5 var(--sans);
+    -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+  }
+  p, h1, h2, h3, ul, figure { margin: 0; }
+  ul { padding: 0; list-style: none; }
+  a { color: var(--accent); text-underline-offset: 3px; }
+  a:hover { color: var(--ink); }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+
+  .wrap { max-width: 1280px; margin: 0 auto; padding: 0 20px; }
+  @media (min-width: 860px) { .wrap { padding: 0 96px; } }
+
+  .soft { color: var(--soft); }
+  .label { font-size: 13px; font-weight: 600; letter-spacing: .02em; color: var(--accent); }
+
+  .pill {
+    display: inline-flex; align-items: center; justify-content: center;
+    height: 52px; padding: 0 26px; border-radius: 999px;
+    background: var(--accent); color: var(--ground);
+    font: 600 17px/1 var(--sans); text-decoration: none; white-space: nowrap;
+    transition: opacity .15s ease, transform .15s ease;
+  }
+  .pill:hover { color: var(--ground); opacity: .9; }
+  .pill:active { transform: scale(.98); }
+  .pill.small { height: 44px; padding: 0 18px; font-size: 15px; }
+  @media (min-width: 860px) { .pill.small { height: 38px; font-size: 14px; } }
+
+  .top { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 64px; }
+  @media (min-width: 860px) { .top { height: 88px; } }
+  .brand { display: inline-flex; align-items: center; gap: 10px; color: var(--ink); text-decoration: none; font-weight: 600; font-size: 16px; letter-spacing: -.01em; }
+  .brand img { width: 26px; height: 26px; border-radius: 7px; }
+
+  footer { margin-top: var(--section); padding: 28px 0 48px; border-top: 1px solid var(--hair); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 24px; font-size: 15px; color: var(--soft); }
+  footer nav { display: flex; flex-wrap: wrap; gap: 8px 24px; }
+
+  /* the listing */
+  .listing { padding-top: 40px; }
+  @media (min-width: 900px) { .listing { padding-top: 72px; } }
+  .posts { margin-top: 24px; max-width: 65ch; }
+  .posts li { padding: 16px 0; border-top: 1px solid var(--hair); display: flex; flex-direction: column; gap: 4px; }
+  .posts a { font-size: 18px; font-weight: 500; letter-spacing: -.005em; text-decoration: none; }
+  .posts a:hover { text-decoration: underline; }
+  .posts time { font-size: 15px; color: var(--soft); }
+
+  /* a post */
+  .post { padding-top: 40px; max-width: 30em; }
+  @media (min-width: 900px) { .post { padding-top: 72px; } }
+  .post .label { text-decoration: none; }
+  .post .label:hover { text-decoration: underline; }
+  .post h1 { margin-top: 16px; font-size: clamp(30px, 2vw + 20px, 44px); line-height: 1.12; font-weight: 600; letter-spacing: -.025em; text-wrap: balance; }
+  .post .byline { margin-top: 14px; font-size: 15px; color: var(--soft); }
+  .post .body { margin-top: 36px; font-size: 18px; line-height: 1.65; }
+  .post .body p { text-wrap: pretty; }
+  .post .body p + p { margin-top: 1.1em; }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="top">
+    <a class="brand" href="/"><img src="/assets/icon-64.png" alt="" width="26" height="26">Second Pass</a>
+    <a class="pill small" data-form href="https://docs.google.com/forms/d/e/1FAIpQLScvdByvg8agyxQhshS12zq-YlLMeuv6PzCnHumQnrZA5gPb0Q/viewform">Join the test</a>
+  </header>
+
+  <main>
+{{ content }}
+  </main>
+
+  <footer>
+    <span>Second Pass</span>
+    <nav aria-label="Footer"><a href="/blog/">Blog</a><a href="/privacy/">Privacy policy</a><a href="mailto:corey@baileydigital.io">corey@baileydigital.io</a></nav>
+  </footer>
+</div>
+
+</body>
+</html>
